@@ -1,0 +1,12 @@
+Method 3: Use the Ipconfig command-line tool
+
+Use the Ipconfig command-line tool. To do this, follow these steps:
+Click Start, type command prompt in the Search Programs and files box, right-click Command Prompt, and then click Run as administrator.
+At the command prompt, type the following commands. Press Enter after each command.
+
+ipconfig /flushdns
+ipconfig /registerdns
+ipconfig /release
+ipconfig /renew
+
+website: http://support.microsoft.com/kb/2779064

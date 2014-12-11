@@ -21,6 +21,7 @@ directory = os.path.dirname(os.path.realpath(__file__))
 os.chdir(directory)
 from extract import get_docx_text
 
+# Locate all docx files in the folder
 file_names = glob.glob('*.docx')
 files = []
 for i in range(len(file_names)):
@@ -28,17 +29,26 @@ for i in range(len(file_names)):
     file_i = str((file_i.encode('ascii','ignore')).replace("\n\n", " "))
     files.append(file_i)
 
-f = open('data.csv', 'wb')
-w = csv.writer(f, delimiter = ',')
-for flies in files:
-    w.writerows([(flies,)])
-f.close()
+class write_content:
+	"""Write contents of docx into file"""
+	f = open('data.csv', 'wb')
+	w = csv.writer(f, delimiter = ',')
+	for flies in files:
+	    w.writerows([(flies,)])
+	f.close()
 
-f2 = open('title.csv', 'wb')
-w2 = csv.writer(f2, delimiter = ',')
-for flies in file_names:
-    w2.writerows([(flies,)])
-f2.close()
+class write_title:
+	"""Write title of docx into file"""
+	f2 = open('title.csv', 'wb')
+	w2 = csv.writer(f2, delimiter = ',')
+	for flies in file_names:
+	    w2.writerows([(flies,"docx")])
+	f2.close()
 
-print len(files)
-print "All the files have been copied into data.cav."
+def main():
+	write_title()
+	write_content()
+	print "All the files have been copied into data.cav."
+
+if __name__ == '__main__':
+	main()
